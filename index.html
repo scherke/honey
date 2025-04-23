@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Honiggläser kaufen</title>
+</head>
+<body>
+    <h1>Honiggläser kaufen</h1>
+    <p>Preis pro Glas: 6 €</p>
+    <label for="quantity">Anzahl der Gläser:</label>
+    <input type="number" id="quantity" min="1" value="1" onchange="updateTotal()">
+    <p>Gesamtbetrag: <span id="total">6</span> €</p>
+    <button onclick="goToPayPal()">Zu PayPal</button>
+
+    <script>
+        function updateTotal() {
+            const quantity = document.getElementById("quantity").value;
+            const total = quantity * 6;
+            document.getElementById("total").textContent = total;
+        }
+
+        function goToPayPal() {
+            const quantity = document.getElementById("quantity").value;
+            const total = quantity * 6;
+            const paypalLink = `https://www.paypal.me/amad3u5/${total}`;
+            window.location.href = paypalLink;
+        }
+    </script>
+</body>
+</html>
