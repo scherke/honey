@@ -129,7 +129,7 @@ export class AppComponent {
   });
 
   goToPayPal() {
-    const paypalLink = `https://www.paypal.me/amad3u5/${this.total()}`;
+    const paypalLink = `https://www.paypal.me/scherke59/${this.total()}`;
     window.location.href = paypalLink;
   }
 
