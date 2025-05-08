@@ -1,0 +1,30 @@
+// @use './material-icons';
+@use './roboto';
+
+@mixin font_base_style {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'Custom-Icons';
+  src:
+    url('./icons/icons.ttf') format('truetype'),
+    url('./icons/icons.woff') format('woff');
+}
+
+.material-icons {
+  @include font_base_style();
+  font-family: 'Custom-Icons';
+}

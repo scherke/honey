@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+@use './styles/fonts/' as *;
+@use './styles/mixins/' as *;
+
+// $honey-primary: mat.define-palette(mat.$amber-palette, 600, 400, 900);
+// $honey-accent: mat.define-palette(mat.$brown-palette, 400, 200, 700);
+// $honey-warn: mat.define-palette(mat.$deep-orange-palette);
+
+// $honey-theme: mat.define-light-theme((
+//   color: (
+//     primary: $honey-primary,
+//     accent: $honey-accent,
+//     warn: $honey-warn,
+//   ),
+//   typography: mat.define-typography-config(),
+//   density: 0,
+// ));
+
+// @include mat.all-component-themes($honey-theme);
+
+html {
+  color-scheme: light dark;
+  @include mat.theme((
+    color: mat.$cyan-palette,
+    typography: Roboto,
+    density: 0
+  ));
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background: #fff8e1;
+}
