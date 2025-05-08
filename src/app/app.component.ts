@@ -28,6 +28,7 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
         </button>
       </div>
       <div class="summary-row">
+        <span>Honig: <span id="quantity">{{ quantity() * 6 | currency:'EUR' }}</span></span>
         <span class="paypal-fee">
           <button mat-icon-button (click)="openPaypalFeeInfo()" aria-label="Info zu PayPal-Gebühren">
             <mat-icon>info</mat-icon>
@@ -101,7 +102,7 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
       flex-direction: column;
       align-items: flex-end;
       gap: 8px;
-      margin: 1rem 0;
+      margin: 1rem 0 2rem;
 
       .paypal-fee {
         display: flex;
