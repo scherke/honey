@@ -32,8 +32,7 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
           <button mat-icon-button (click)="openPaypalFeeInfo()" aria-label="Info zu PayPal-Gebühren">
             <mat-icon>info</mat-icon>
           </button>
-          PayPal-Gebühren:
-          <span id="paypal-fee">{{ paypalFee() | currency:'EUR' }}</span>
+          <span id="paypal-fee">PayPal-Gebühren: {{ paypalFee() | currency:'EUR' }}</span>
         </span>
         <span>Gesamtbetrag: <span id="total">{{ total() | currency:'EUR' }}</span></span>
       </div>
@@ -116,7 +115,7 @@ export class AppComponent {
 
   paypalFixedFee = 0.39; // fixed PayPal fee in EUR
   paypalPercentFee = 0.0249; // variable PayPal fee (2.49%)
-  
+
   quantity = signal(1);
   paypalFee = computed(() => {
     const basePrice = this.quantity() * 6;

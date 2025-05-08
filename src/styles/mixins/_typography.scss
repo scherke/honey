@@ -20,8 +20,7 @@ $spacingPixels: 8 10 11 12 13 14 15 16 17 18 20 22 24 26 28 30 32 36 38 40 46 48
 .cd-typography {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: Roboto, sans-serif;
-  font-family: var(--si-typography-font-family, Roboto, sans-serif);
+  font-family: var(--cd-typography-font-family, Roboto, sans-serif);
 }
 
 .cd-typography--shadow {
