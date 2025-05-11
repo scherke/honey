@@ -40,7 +40,8 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
         </span> -->
         <!-- <span>Gesamtbetrag: <span id="total">{{ total() | currency:'EUR' }}</span></span> -->
       </div>
-      <button mat-raised-button (click)="goToPayPal()">PayPal Spende</button>
+      <button mat-raised-button (click)="goToPayPal()">weiter zu PayPal</button>
+      <p class="ps">PS: PayPal Zahlungsart => Für Freunde und Familie</p>
     </mat-card>
   `,
   styles: `
@@ -116,6 +117,15 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
         align-items: center;
       }
     }
+
+    .ps {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 1rem;
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 0;
+    }
   `
 })
 export class AppComponent {
@@ -137,7 +147,7 @@ export class AppComponent {
   });
 
   goToPayPal() {
-    const paypalLink = 'https://www.paypal.com/pools/c/9eKdwxMXLa';
+    const paypalLink = 'https://www.paypal.me/scherke59';
     window.location.href = paypalLink;
   }
 
