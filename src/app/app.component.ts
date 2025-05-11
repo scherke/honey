@@ -15,29 +15,32 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
   imports: [FormsModule, MatButtonModule, MatInputModule, MatCardModule, MatFormFieldModule, MatIconModule, MatDialogModule, CurrencyPipe],
   standalone: true,
   template: `
-    <mat-card>
-      <h1>Honig Verkauf</h1>
-      <p>Preis pro Glas: {{ 6 | currency:'EUR' }}</p>
-      <div class="button-row">
+      <mat-card>
+        <h1>Honiggläser</h1>
+        <h4>aus <br/> Steutzer Hobby-Imkerei</h4>
+        <p>Als leidenschaftliche Hobby-Imkerin pflege ich die Bienen mit viel Liebe und teile gern meinen selbstgemachten Honig mit dir. Dein Beitrag von <strong>6 €</strong> pro <strong>Glas</strong> unterstützt das kleine Projekt und hilft die Bienen zu versorgen. Als Dankeschön kannst du die entsprechende Anzahl Honiggläser mitnehmen.</p>
+        <p>Bitte gib im Verwendungszweck "[X] Honiggläser" an, damit ich weiß, wie viele Gläser du erworben hast.</p>
+        <p>Danke, dass du das regionale Hobby unterstützt!</p>
+      <!-- <div class="button-row">
         <button mat-mini-fab (click)="decrement()" [disabled]="quantity() <= 1">
           <mat-icon>remove</mat-icon>
         </button>
         <span style="min-width: 40px; text-align: center; font-size: 1.2rem; display: inline-block;">{{ quantity() }}</span>
-        <button mat-mini-fab (click)="increment()">
+        <button mat-mini-fab (click)="increment()" [disabled]="quantity() >= 3">
           <mat-icon>add</mat-icon>
         </button>
-      </div>
+      </div> -->
       <div class="summary-row">
-        <span>Honig: <span id="quantity">{{ quantity() * 6 | currency:'EUR' }}</span></span>
-        <span class="paypal-fee">
+        <!-- <span>Honig: <span id="quantity">{{ quantity() * 6 | currency:'EUR' }}</span></span> -->
+        <!-- <span class="paypal-fee">
           <button mat-icon-button (click)="openPaypalFeeInfo()" aria-label="Info zu PayPal-Gebühren">
             <mat-icon>info</mat-icon>
           </button>
           <span id="paypal-fee">PayPal-Gebühren: {{ paypalFee() | currency:'EUR' }}</span>
-        </span>
-        <span>Gesamtbetrag: <span id="total">{{ total() | currency:'EUR' }}</span></span>
+        </span> -->
+        <!-- <span>Gesamtbetrag: <span id="total">{{ total() | currency:'EUR' }}</span></span> -->
       </div>
-      <button mat-raised-button (click)="goToPayPal()">Zu PayPal</button>
+      <button mat-raised-button (click)="goToPayPal()">PayPal Spende</button>
     </mat-card>
   `,
   styles: `
@@ -60,7 +63,11 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
     }
 
     h1 {
-      margin-bottom: 1rem;
+      margin-bottom: 0px;
+    }
+
+    h4 {
+      margin-top: 0px;
     }
 
     mat-form-field {
@@ -118,18 +125,19 @@ export class AppComponent {
   paypalPercentFee = 0.0249; // variable PayPal fee (2.49%)
 
   quantity = signal(1);
-  paypalFee = computed(() => {
-    const basePrice = this.quantity() * 6;
-    const total = (basePrice + this.paypalFixedFee) / (1 - this.paypalPercentFee);
-    return Math.round((total - basePrice) * 100) / 100;
-  });
+  // paypalFee = computed(() => {
+  //   const basePrice = this.quantity() * 6;
+  //   const total = (basePrice + this.paypalFixedFee) / (1 - this.paypalPercentFee);
+  //   return Math.round((total - basePrice) * 100) / 100;
+  // });
   total = computed(() => {
     const basePrice = this.quantity() * 6;
-    return Math.round(((basePrice + this.paypalFixedFee) / (1 - this.paypalPercentFee)) * 100) / 100;
+    // return Math.round(((basePrice + this.paypalFixedFee) / (1 - this.paypalPercentFee)) * 100) / 100;
+    return basePrice;
   });
 
   goToPayPal() {
-    const paypalLink = `https://www.paypal.me/scherke59/${this.total()}`;
+    const paypalLink = 'https://www.paypal.com/pools/c/9eKdwxMXLa';
     window.location.href = paypalLink;
   }
 
@@ -140,7 +148,7 @@ export class AppComponent {
   }
 
   increment() {
-    this.quantity.update(q => q + 1);
+    this.quantity.update(q => q < 3 ? q + 1 : q);
   }
   decrement() {
     this.quantity.update(q => q > 1 ? q - 1 : q);
