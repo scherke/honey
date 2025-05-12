@@ -19,8 +19,9 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
         <h1>Honiggläser</h1>
         <h4>aus <br/> Steutzer Hobby-Imkerei</h4>
         <p>Als leidenschaftliche Hobby-Imkerin pflege ich die Bienen mit viel Liebe und teile gern meinen selbstgemachten Honig mit dir. Dein Beitrag von <strong>6 €</strong> pro <strong>Glas</strong> unterstützt das kleine Projekt und hilft die Bienen zu versorgen. Als Dankeschön kannst du die entsprechende Anzahl Honiggläser mitnehmen.</p>
-        <p>Bitte gib im Verwendungszweck "[X] Honiggläser" an, damit ich weiß, wie viele Gläser du erworben hast.</p>
-        <p>Danke, dass du das regionale Hobby unterstützt!</p>
+        <p>Bitte gib im Verwendungszweck <strong>X Honiggläser</strong> an, damit ich weiß, wie viele Gläser du erworben hast.</p>
+        <img src="biene.png" alt="Honiggläser" />
+        <p style="text-align: center;">Danke, dass du das regionale Hobby unterstützt!</p>
       <!-- <div class="button-row">
         <button mat-mini-fab (click)="decrement()" [disabled]="quantity() <= 1">
           <mat-icon>remove</mat-icon>
@@ -30,21 +31,26 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
           <mat-icon>add</mat-icon>
         </button>
       </div> -->
-      <div class="summary-row">
-        <!-- <span>Honig: <span id="quantity">{{ quantity() * 6 | currency:'EUR' }}</span></span> -->
-        <!-- <span class="paypal-fee">
+      <!-- <div class="summary-row">
+        <span>Honig: <span id="quantity">{{ quantity() * 6 | currency:'EUR' }}</span></span>
+        <span class="paypal-fee">
           <button mat-icon-button (click)="openPaypalFeeInfo()" aria-label="Info zu PayPal-Gebühren">
             <mat-icon>info</mat-icon>
           </button>
           <span id="paypal-fee">PayPal-Gebühren: {{ paypalFee() | currency:'EUR' }}</span>
-        </span> -->
-        <!-- <span>Gesamtbetrag: <span id="total">{{ total() | currency:'EUR' }}</span></span> -->
-      </div>
+        </span>
+        <span>Gesamtbetrag: <span id="total">{{ total() | currency:'EUR' }}</span></span>
+      </div> -->
       <button mat-raised-button (click)="goToPayPal()">weiter zu PayPal</button>
       <p class="ps">PS: PayPal Zahlungsart => Für Freunde und Familie</p>
     </mat-card>
   `,
   styles: `
+    img {
+      width: 100%;
+      max-width: 64px;
+      margin: 1rem auto;
+    }
     mat-card {
       max-width: 400px;
       margin: 2rem auto;
@@ -102,6 +108,7 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
     }
 
     button[mat-raised-button] {
+      margin-top: 1rem;
       width: 100%;
     }
 
