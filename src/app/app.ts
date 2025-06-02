@@ -8,12 +8,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { CurrencyPipe } from '@angular/common';
-import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component';
+import { PaypalFeeInfoDialog } from './paypal-fee-info-dialog';
+import { version } from '../../package.json';
 
 @Component({
   selector: 'app-root',
   imports: [FormsModule, MatButtonModule, MatInputModule, MatCardModule, MatFormFieldModule, MatIconModule, MatDialogModule, CurrencyPipe],
-  standalone: true,
   template: `
       <mat-card>
         <h1>Honiggläser</h1>
@@ -43,6 +43,7 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
       </div> -->
       <button mat-raised-button (click)="goToPayPal()">weiter zu PayPal</button>
       <p class="ps">PS: PayPal Zahlungsart => Für Freunde und Familie</p>
+      <p class="version">Version: {{ appVersion }}</p>
     </mat-card>
   `,
   styles: `
@@ -133,10 +134,17 @@ import { PaypalFeeInfoDialogComponent } from './paypal-fee-info-dialog.component
       font-style: italic;
       margin-bottom: 0;
     }
+    .version {
+      font-size: 0.7rem;
+      color: #999;
+      margin-top: 1rem;
+      text-align: center;
+    }
   `
 })
-export class AppComponent {
+export class App {
   private dialog = inject(MatDialog);
+  appVersion = version;
 
   paypalFixedFee = 0.39; // fixed PayPal fee in EUR
   paypalPercentFee = 0.0249; // variable PayPal fee (2.49%)
@@ -159,7 +167,7 @@ export class AppComponent {
   }
 
   openPaypalFeeInfo() {
-    this.dialog.open(PaypalFeeInfoDialogComponent, {
+    this.dialog.open(PaypalFeeInfoDialog, {
       width: '420px'
     });
   }

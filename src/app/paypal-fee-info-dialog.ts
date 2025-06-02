@@ -23,4 +23,4 @@ import { MatDialogModule } from '@angular/material/dialog';
     </div>
   `
 })
-export class PaypalFeeInfoDialogComponent {}
+export class PaypalFeeInfoDialog {}
